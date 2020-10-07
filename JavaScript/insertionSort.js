@@ -1,4 +1,3 @@
-
 /* 
 << Insertion Sort Algorithm >>
 Insertion sort is a simple sorting algorithm that builds the final sorted array 
@@ -20,16 +19,14 @@ function insertionSort() {
   let aux = 0;                                 // To temporary store smaller value
 
   // Selection Sort Algorithm implementation
-  for (i=0; i < digitsLength; i++) {            // For each digit in number
-    smaller = i;                                // I assume the item in the first potition of list is the smaller
-    for (j=i+1; j < digitsLength; j++) {         // For each digit in unordered sublist
-      if (digits[j] < digits[smaller]) {         // If digit in j position is smaller than the actual ...
-        smaller = j;                            // Update index position of smaller digit
-      }
-    }        
-    aux = digits[i];                            // Copy the digit to be replaced to temp variable
-    digits[i] = digits[smaller];                 // Copy the grater digit to greater index in list
-    digits[smaller] = aux;                  // Copy the grater digit to greater index in list 
+  for (i=0; i < digitsLength; i++) {            // Unordered list starts at 2nd position
+    j = i;                                      // Get first element from unordered list
+    while (j > 0 && digits[j-1]>digits[j]) {    // Compare this with each element to the left
+      aux = digits[j-1];                        // Copy the digit to be replaced to temp variable
+      digits[j-1] = digits[j];                  // Copy the grater digit to greater index in list
+      digits[j] = aux;                          // Copy the grater digit to greater index in list
+      j--;                                      // Move to left
+    }
   }          
     
 
